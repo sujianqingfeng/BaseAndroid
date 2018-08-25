@@ -1,0 +1,66 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId rootProject.ext.applicationId
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        multiDexEnabled rootProject.ext.multiDexEnabled
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    // kotlin stdlib sdk
+    api rootProject.ext.kotlin_stdlib
+    //RxKotlin
+    api rootProject.ext.rxkotlin
+    api rootProject.ext.rxandroid
+    //Gson
+    api rootProject.ext.gson
+    //Okhttp Retrofit
+    api rootProject.ext.okhttp
+    api rootProject.ext.retrofit
+    api rootProject.ext.okhttp_logging
+    api rootProject.ext.retrofit_converter_gson
+    api rootProject.ext.retrofit_adapter
+    //RxLifecycle
+    api rootProject.ext.rxlifecycle_kotlin
+    api rootProject.ext.rxlifecycle_components
+    //logger
+    api rootProject.ext.logger
+    // multidex
+    api rootProject.ext.multidex
+    //
+    api rootProject.ext.anko
+    // fragmentation
+    api rootProject.ext.fragmentation
+
+
+
+    api rootProject.ext.cardview
+    api rootProject.ext.recyclerview
+    api rootProject.ext.design
+    api rootProject.ext.app_compat
+    api rootProject.ext.constraint_layout
+
+
+}
