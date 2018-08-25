@@ -27,7 +27,13 @@ abstract class BaseTitleActivity : BaseActivity(),SimpleToolbar.ToolbarListener{
 
 
     override fun setContentView(layoutResID: Int) {
-        mToolbar = SimpleToolbar(this)
+//        mToolbar = SimpleToolbar(this)
+
+        mToolbar = SimpleToolbar.Builder(this)
+                .setTitle(getTitleText())
+                .setToolbarListener(this)
+                .build()
+
         val rootContainer = LinearLayout(this)
         rootContainer.orientation = LinearLayout.VERTICAL
         val contentContainer = View.inflate(this,layoutResID,null)
@@ -36,16 +42,15 @@ abstract class BaseTitleActivity : BaseActivity(),SimpleToolbar.ToolbarListener{
 
         rootContainer.addView(contentContainer,LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT)
         super.setContentView(rootContainer)
+        initToolbar()
     }
 
 
-    fun initToolbar(title:CharSequence=""){
-        mToolbar?.title = title
+    fun initToolbar(){
         setSupportActionBar(mToolbar)
         mToolbar?.fitsSystemWindows = true
         mToolbar?.backgroundColorResource = R.color.colorPrimary
-
-        mToolbar?.setToolbarListener(this)
+//        mToolbar?.setToolbarListener(this)
     }
 
 
@@ -65,4 +70,6 @@ abstract class BaseTitleActivity : BaseActivity(),SimpleToolbar.ToolbarListener{
     abstract fun getLayoutResId():Int
 
     abstract fun initView()
+
+    abstract fun getTitleText():String
 }

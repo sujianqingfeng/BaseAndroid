@@ -8,8 +8,7 @@ import org.jetbrains.anko.startActivity
 import java.util.concurrent.TimeUnit
 
 class SplashActivity : BaseTitleActivity() {
-
-
+    override fun getTitleText(): String =""
     override fun getLayoutResId(): Int = R.layout.activity_splash
     override fun isAddToolbar(): Boolean = false
 
