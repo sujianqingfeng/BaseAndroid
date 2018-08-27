@@ -19,7 +19,7 @@ abstract class BaseMvpFragment<P:BaseContract.IBasePresenter>: BaseFragment(),Ba
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
-        initPresenter()
+        mPresenter = initPresenter()
     }
 
 
@@ -41,7 +41,9 @@ abstract class BaseMvpFragment<P:BaseContract.IBasePresenter>: BaseFragment(),Ba
     }
 
 
-    abstract fun initPresenter()
+
+
+    abstract fun initPresenter():P
     override fun showLoading() {
     }
 

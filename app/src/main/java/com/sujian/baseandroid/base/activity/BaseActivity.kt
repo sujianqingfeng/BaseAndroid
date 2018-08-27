@@ -16,6 +16,8 @@ import com.sujian.baseandroid.base.contract.BaseContract
 open class BaseActivity: RxAppCompatActivity(),BaseContract.IBaseView {
 
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initWindos()

@@ -34,8 +34,8 @@ abstract class BaseFragment :RxFragment(){
         lazyInitView()
     }
 
-    fun lazyInitView(){}
-    fun initView(){}
+    open fun lazyInitView(){}
+    open fun initView(){}
     abstract fun getLayoutResId():Int
 
 }

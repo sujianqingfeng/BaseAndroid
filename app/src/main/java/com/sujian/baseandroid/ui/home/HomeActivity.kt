@@ -1,5 +1,7 @@
 package com.sujian.baseandroid.ui.home
 
+import android.util.TypedValue
+import com.orhanobut.logger.Logger
 import com.sujian.baseandroid.R
 import com.sujian.baseandroid.base.activity.BaseMvpTitleActivity
 import com.sujian.baseandroid.data.bean.HomeBean
@@ -16,6 +18,7 @@ class HomeActivity : BaseMvpTitleActivity<HomePresenter>(),HomeContract.View {
 
 
     override fun initView() {
+
     }
 
     override fun showText(bean: HomeBean) {

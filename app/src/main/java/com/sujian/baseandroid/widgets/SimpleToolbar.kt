@@ -9,11 +9,15 @@ import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.orhanobut.logger.Logger
 import com.sujian.baseandroid.R
-import org.jetbrains.anko.dip
-import org.jetbrains.anko.margin
-import org.jetbrains.anko.sp
-import org.jetbrains.anko.textColor
+import org.jetbrains.anko.*
+import android.util.TypedValue
+import android.content.res.TypedArray
+
+
+
+
 
 
 /**
@@ -24,7 +28,7 @@ import org.jetbrains.anko.textColor
 class SimpleToolbar @JvmOverloads constructor(builder: Builder, context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : Toolbar(context, attrs, defStyleAttr) {
 
 
-    private var builder:Builder? = null
+    private var builder: Builder? = null
 
 
     init {
@@ -44,6 +48,14 @@ class SimpleToolbar @JvmOverloads constructor(builder: Builder, context: Context
     fun setRightVisiable(bool: Boolean) {
 //        builder?.rightView?.visibility = if (bool) View.VISIBLE else View.GONE
         if (!bool) removeView(builder?.rightView)
+    }
+
+    fun setCustomView(customView: View) {
+        removeView(builder?.titleView)
+        val titleParams = Toolbar.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+        titleParams.gravity = Gravity.CENTER_HORIZONTAL
+        customView.layoutParams = titleParams
+        addView(customView)
     }
 
     //
@@ -100,7 +112,12 @@ class SimpleToolbar @JvmOverloads constructor(builder: Builder, context: Context
             leftParams.gravity = Gravity.LEFT
             leftParams.margin = context.dip(16)
             leftView?.layoutParams = leftParams
-            leftView?.setBackgroundResource(R.drawable.ripple_bg)
+
+            val typedValue = TypedValue()
+            context.theme
+                    .resolveAttribute(android.R.attr.selectableItemBackgroundBorderless, typedValue, true)
+            leftView?.backgroundResource = typedValue.resourceId
+
 
 
             rightView = AppCompatImageView(context)
@@ -109,7 +126,7 @@ class SimpleToolbar @JvmOverloads constructor(builder: Builder, context: Context
             rightParams.topMargin = context.dip(8)
             rightParams.bottomMargin = context.dip(8)
             rightView?.layoutParams = rightParams
-            rightView?.setBackgroundResource(R.drawable.ripple_bg)
+            rightView?.backgroundResource = typedValue.resourceId
         }
 
         fun genTitle() {

@@ -8,7 +8,7 @@ import org.jetbrains.anko.startActivity
 import java.util.concurrent.TimeUnit
 
 class SplashActivity : BaseTitleActivity() {
-    override fun getTitleText(): String =""
+    override fun getTitleText(): String = ""
     override fun getLayoutResId(): Int = R.layout.activity_splash
     override fun isAddToolbar(): Boolean = false
 
@@ -16,7 +16,6 @@ class SplashActivity : BaseTitleActivity() {
         Flowable.timer(3, TimeUnit.SECONDS)
                 .compose(this.bindToLifecycle())
                 .subscribe { startNextActivity() }
-
 
     }
 
