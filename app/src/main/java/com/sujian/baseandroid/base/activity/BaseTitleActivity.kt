@@ -1,6 +1,7 @@
 package com.sujian.baseandroid.base.activity
 
 import android.os.Bundle
+import android.transition.Explode
 import android.view.View
 import android.widget.LinearLayout
 import com.sujian.baseandroid.R
@@ -21,6 +22,9 @@ abstract class BaseTitleActivity : BaseActivity(),SimpleToolbar.ToolbarListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.setContentView(getLayoutResId())
+
+        window.enterTransition = Explode().setDuration(500)
+        window.exitTransition = Explode().setDuration(500)
         initView()
     }
 

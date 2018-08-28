@@ -24,7 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.custom_title.CustomTitleActivity"></activity>
+        <activity android:name=".ui.custom_title.CustomTitleActivity" />
+        <activity android:name=".ui.tembin.TembinActivity"></activity>
     </application>
 
 </manifest>

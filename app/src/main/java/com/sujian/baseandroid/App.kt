@@ -8,13 +8,12 @@ import com.sujian.baseandroid.services.InitService
 /**
  *   author: sujian
  *   date: 2018/8/21
- *   desc: xxx
+ *   desc: App
  */
-class App :BaseApplication(){
+class App : BaseApplication() {
 
     override fun onCreate() {
         super.onCreate()
-      InitService.startService(context)
-
+        InitService.startService(context)
     }
 }

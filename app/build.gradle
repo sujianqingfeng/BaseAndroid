@@ -49,12 +49,13 @@ dependencies {
     api rootProject.ext.logger
     // multidex
     api rootProject.ext.multidex
-    //
+    // anko
     api rootProject.ext.anko
     // fragmentation
     api rootProject.ext.fragmentation
-
-
+    //glide
+    implementation rootProject.ext.glide
+    annotationProcessor rootProject.glide_compiler
 
     api rootProject.ext.cardview
     api rootProject.ext.recyclerview

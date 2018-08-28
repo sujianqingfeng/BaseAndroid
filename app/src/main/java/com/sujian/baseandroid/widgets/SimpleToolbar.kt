@@ -120,6 +120,7 @@ class SimpleToolbar @JvmOverloads constructor(builder: Builder, context: Context
 
 
 
+
             rightView = AppCompatImageView(context)
             val rightParams = Toolbar.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
             rightParams.gravity = Gravity.RIGHT

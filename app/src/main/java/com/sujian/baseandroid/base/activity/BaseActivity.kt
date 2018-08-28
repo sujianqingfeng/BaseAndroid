@@ -1,8 +1,11 @@
 package com.sujian.baseandroid.base.activity
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.support.v4.app.ActivityCompat
+import android.support.v4.app.ActivityOptionsCompat
 import android.view.View
 import android.view.WindowManager
 import com.sujian.baseandroid.base.contract.BaseContract
@@ -34,6 +37,15 @@ open class BaseActivity: RxAppCompatActivity(),BaseContract.IBaseView {
         } else {
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         }
+    }
+
+
+
+    protected fun <T> startNextActivity(cls:Class<T>) {
+        val intent = Intent(this,cls)
+        val makeSceneTransitionAnimation = ActivityOptionsCompat.makeSceneTransitionAnimation(this)
+        ActivityCompat.startActivity(this,intent,makeSceneTransitionAnimation.toBundle())
+        finish()
     }
 
 

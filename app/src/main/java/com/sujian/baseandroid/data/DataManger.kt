@@ -4,6 +4,7 @@ import com.sujian.baseandroid.data.api.WanAndroidService
 import com.sujian.baseandroid.data.bean.HomeBean
 import com.sujian.baseandroid.data.net.RetrofitFactory
 import io.reactivex.Flowable
+import okhttp3.ResponseBody
 
 
 /**
@@ -18,8 +19,9 @@ object DataManger {
     private val wanAndroidService by lazy { mRetrofitFactory.create(WanAndroidService::class.java,"http://www.wanandroid.com") }
 
 
-    fun getHome():Flowable<HomeBean>{
-        return wanAndroidService.home(0)
-    }
+    fun getHome():Flowable<HomeBean> = wanAndroidService.home(0)
+
+    fun downFile(url:String):Flowable<ResponseBody> = wanAndroidService.downloadFile(url)
+
 
 }
