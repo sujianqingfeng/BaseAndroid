@@ -30,4 +30,14 @@
         app:layout_constraintStart_toStartOf="@+id/tv_text"
         app:layout_constraintTop_toBottomOf="@+id/tv_text" />
 
+    <Button
+        android:id="@+id/home_bt_pop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="popup"
+        app:layout_constraintEnd_toEndOf="@+id/tv_text"
+        app:layout_constraintStart_toStartOf="@+id/tv_text"
+        tools:layout_editor_absoluteY="214dp" />
+
 </android.support.constraint.ConstraintLayout>

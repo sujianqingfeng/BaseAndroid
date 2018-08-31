@@ -17,4 +17,10 @@
         <item name="android:statusBarColor" tools:targetApi="lollipop">@android:color/transparent</item>
     </style>
 
+
+    <style name="RightTop2PopAnim" parent="@android:style/Animation.Activity">
+        <item name="android:windowEnterAnimation">@anim/right_top_in_2</item>
+        <item name="android:windowExitAnimation">@anim/right_top_out_2</item>
+    </style>
+
 </resources>

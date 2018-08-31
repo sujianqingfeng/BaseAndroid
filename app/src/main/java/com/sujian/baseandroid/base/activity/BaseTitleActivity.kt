@@ -5,7 +5,7 @@ import android.transition.Explode
 import android.view.View
 import android.widget.LinearLayout
 import com.sujian.baseandroid.R
-import com.sujian.baseandroid.widgets.SimpleToolbar
+import com.sujian.baseandroid.widgets.EasyToolbar
 import org.jetbrains.anko.backgroundColorResource
 import org.jetbrains.anko.dip
 
@@ -15,9 +15,9 @@ import org.jetbrains.anko.dip
  *   date: 2018/8/21
  *   desc: xxx
  */
-abstract class BaseTitleActivity : BaseActivity(),SimpleToolbar.ToolbarListener{
+abstract class BaseTitleActivity : BaseActivity(), EasyToolbar.ToolbarListener {
 
-    protected var mToolbar:SimpleToolbar?=null
+    protected var mToolbar: EasyToolbar? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,28 +29,27 @@ abstract class BaseTitleActivity : BaseActivity(),SimpleToolbar.ToolbarListener{
     }
 
 
-
     override fun setContentView(layoutResID: Int) {
 //        mToolbar = SimpleToolbar(this)
 
-        mToolbar = SimpleToolbar.Builder(this)
+        mToolbar = EasyToolbar.Builder(this)
                 .setTitle(getTitleText())
                 .setToolbarListener(this)
                 .build()
 
         val rootContainer = LinearLayout(this)
         rootContainer.orientation = LinearLayout.VERTICAL
-        val contentContainer = View.inflate(this,layoutResID,null)
+        val contentContainer = View.inflate(this, layoutResID, null)
 
-        if (isAddToolbar()) rootContainer.addView(mToolbar,LinearLayout.LayoutParams.MATCH_PARENT,dip(75))
+        if (isAddToolbar()) rootContainer.addView(mToolbar, LinearLayout.LayoutParams.MATCH_PARENT, dip(75))
 
-        rootContainer.addView(contentContainer,LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT)
+        rootContainer.addView(contentContainer, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
         super.setContentView(rootContainer)
         initToolbar()
     }
 
 
-    fun initToolbar(){
+    fun initToolbar() {
         setSupportActionBar(mToolbar)
         mToolbar?.fitsSystemWindows = true
         mToolbar?.backgroundColorResource = R.color.colorPrimary
@@ -58,22 +57,22 @@ abstract class BaseTitleActivity : BaseActivity(),SimpleToolbar.ToolbarListener{
     }
 
 
-    override fun onLeftClick() {
+    override fun onLeftClick(view:View) {
         finish()
     }
 
-    override fun onRightClick() {
+    override fun onRightClick(view:View) {
 
     }
 
     /**
      * 如果不需要添加toolbar 覆写此方法即可
      */
-    open fun isAddToolbar():Boolean = true
+    open fun isAddToolbar(): Boolean = true
 
-    abstract fun getLayoutResId():Int
+    abstract fun getLayoutResId(): Int
 
     abstract fun initView()
 
-    abstract fun getTitleText():String
+    abstract fun getTitleText(): String
 }

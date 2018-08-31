@@ -25,7 +25,7 @@ import android.content.res.TypedArray
  *   date: 2018/8/21
  *   desc: xxx
  */
-class SimpleToolbar @JvmOverloads constructor(builder: Builder, context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : Toolbar(context, attrs, defStyleAttr) {
+class EasyToolbar @JvmOverloads constructor(builder: Builder, context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : Toolbar(context, attrs, defStyleAttr) {
 
 
     private var builder: Builder? = null
@@ -61,17 +61,17 @@ class SimpleToolbar @JvmOverloads constructor(builder: Builder, context: Context
     //
     fun initView() {
         when (builder?.mode) {
-            SimpleToolbar.DEFAULT -> {
+            EasyToolbar.DEFAULT -> {
                 builder?.genTitle()
                 builder?.titleView?.text = builder?.title
                 addView(builder?.titleView)
 
                 builder?.leftView?.setImageResource(builder!!.leftRes)
-                builder?.leftView?.setOnClickListener { builder?.toolbarListener?.onLeftClick() }
+                builder?.leftView?.setOnClickListener { view ->  builder?.toolbarListener?.onLeftClick(view) }
                 addView(builder?.leftView)
 
                 builder?.rightView?.setImageResource(builder!!.rightRes)
-                builder?.rightView?.setOnClickListener { builder?.toolbarListener?.onRightClick() }
+                builder?.rightView?.setOnClickListener { view ->  builder?.toolbarListener?.onRightClick(view) }
                 addView(builder?.rightView)
             }
             else -> {
@@ -81,8 +81,8 @@ class SimpleToolbar @JvmOverloads constructor(builder: Builder, context: Context
 
 
     interface ToolbarListener {
-        fun onLeftClick()
-        fun onRightClick()
+        fun onLeftClick(view:View)
+        fun onRightClick(view:View)
     }
 
 
@@ -137,7 +137,7 @@ class SimpleToolbar @JvmOverloads constructor(builder: Builder, context: Context
             titleView?.layoutParams = titleParams
             titleView?.gravity = Gravity.CENTER
             titleView?.textColor = Color.WHITE
-            titleView?.textSize = context.sp(5).toFloat()
+            titleView?.textSize = context.sp(10).toFloat()
         }
 
         fun setTitle(title: String): Builder {
@@ -160,7 +160,7 @@ class SimpleToolbar @JvmOverloads constructor(builder: Builder, context: Context
             return this
         }
 
-        fun build(): SimpleToolbar = SimpleToolbar(this, context)
+        fun build(): EasyToolbar = EasyToolbar(this, context)
 
     }
 

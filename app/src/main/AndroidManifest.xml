@@ -25,7 +25,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.custom_title.CustomTitleActivity" />
-        <activity android:name=".ui.tembin.TembinActivity"></activity>
+        <activity android:name=".ui.tembin.TembinActivity" />
+        <activity android:name=".ui.popup.PopupActivity"></activity>
     </application>
 
 </manifest>
